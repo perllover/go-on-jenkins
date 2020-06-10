@@ -12,5 +12,14 @@ pipeline{
                 sh 'go build'
             }
         }
+        stage('Test'){
+            environment {
+                CODECOVE_TOKEN = credentials('123')
+            }
+            steps {
+                sh 'go test ./... -coverprofile=coverage.txt'
+                sh curl -s https://codecov.io/bash | bash -s -''
+            }
+        }
     }
 }
