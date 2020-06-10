@@ -7,7 +7,7 @@ pipeline{
         go 'golang'
     }
     stages{
-        stage{
+        stage('Build'){
             steps{
                 sh 'go build'
             }
